@@ -16,7 +16,7 @@ export const Header = () => {
                     
                 </img>
                 <p>
-                    Doog Food
+                    Dog Food
                 </p>
             </Link>
             <div>

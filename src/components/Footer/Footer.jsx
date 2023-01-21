@@ -19,10 +19,9 @@ export const Footer = () => {
                     <img className={footerStyles.logoImg} src={logoImg}>
                     </img>
                     <p>
-                        Doog Food
+                        Dog Food
                     </p>
                 </Link>
-                <p className={footerStyles.logoCopy}>&copy;"Интернет магазин Dog Food"</p>
             </div>
 
 
