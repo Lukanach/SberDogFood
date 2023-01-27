@@ -1,12 +1,12 @@
 /* eslint-disable */
 import { Link, NavLink } from 'react-router-dom'
 import footerStyles from './footer.module.css'
-import logoImg from './logo.png'
-import telegramImg from './socials/telegram.png'
-import watsappImg from './socials/whatsapp.png'
-import viberImg from './socials/viber.png'
-import instaImg from './socials/instagram.png'
-import vkImg from './socials/vk.png'
+import logoImg from '../../icons/logo.png'
+import telegramImg from '../../icons/telegram.png'
+import watsappImg from '../../icons/whatsapp.png'
+import viberImg from '../../icons/viber.png'
+import instaImg from '../../icons/instagram.png'
+import vkImg from '../../icons/vk.png'
 
 
 export const Footer = () => {

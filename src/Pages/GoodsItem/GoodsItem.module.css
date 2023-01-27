@@ -1,0 +1,48 @@
+.itemImg {
+    height: 200px;
+    width: 200px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 2px white;
+    margin: 15px;
+  }
+  
+  .item {
+    display: grid;
+    justify-content: center;
+    border: 2px solid;
+    border-radius: 10px;
+    width: 250px;
+    height: 500px;
+    margin: 4px;
+    padding: 10px;
+    background-color: rgb(223, 230, 171);
+    color: black;
+  }
+  
+  .itemButton {
+    border-radius: 8px;
+    height: 30px;
+    width: auto;
+    margin-top: 10px;
+    border: none;
+    padding: 10px 20px 26px;
+    font-weight: 700
+  }
+  
+  
+  p {
+    margin-bottom: 4px;
+      overflow-y: auto;
+      scroll-behavior: smooth;
+  }
+  
+  span {
+    color: black;
+  }
+  
+  .blockBtn {
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    gap: 10px;
+  }

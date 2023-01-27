@@ -2,11 +2,18 @@
 
 import { Link } from 'react-router-dom'
 import headerStyles from './header.module.css'
-import logoImg from './logo.png'
-import favoritestImg from './favorites.png'
-import cartImg from './cart.png'
+import logoImg from '../../icons/logo.png'
+import favoritestImg from '../../icons/favorites.png'
+import cartImg from '../../icons/cart.png'
+import { useContext } from 'react'
+import { AppContext } from '../../contexts/AppContextProvider';
 
 export const Header = () => {
+
+    const {setToken} = useContext(AppContext);
+    function signoutHandler() {
+        setToken('');
+    }
 
   return (
     <header className={headerStyles.wr}>
@@ -16,7 +23,7 @@ export const Header = () => {
                     
                 </img>
                 <p>
-                    Dog Food
+                    Doog Food
                 </p>
             </Link>
             <div>
@@ -37,6 +44,10 @@ export const Header = () => {
 
                 <Link className={headerStyles.link} to="/signin">
                     <p className={headerStyles.sign}>Вход</p>
+                </Link>
+
+                <Link onClick={signoutHandler} className={headerStyles.link} to="/">
+                    <p className={headerStyles.sign}>Выход</p>
                 </Link>
                 
                 <Link className={headerStyles.link} to="/signup">
