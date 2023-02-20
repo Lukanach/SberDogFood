@@ -8,6 +8,9 @@ import { useNavigate } from 'react-router-dom'
 import { AppContext } from '../../contexts/AppContextProvider';
 import React, { useContext } from 'react';
 import { Loader } from '../../components/Loader/Loader.jsx'
+import authSlice from '../../store/auth'
+import { useDispatch } from 'react-redux';
+
 
 const initialValues = {
   email: '',
@@ -18,6 +21,7 @@ export const SigninPage = () => {
 const navigate = useNavigate()
 
 const { setToken } = useContext(AppContext)
+const dispatch = useDispatch();
 
 const { mutateAsync, isLoading, isError, error } = useMutation({
   mutationFn: (data) => {
@@ -44,7 +48,7 @@ const { mutateAsync, isLoading, isError, error } = useMutation({
       })
       .then((res) => res.json())
       .then((data) => {
-        setToken(data.token)
+        dispatch(authSlice.actions.setToken(data.token));
       })
   },
 })

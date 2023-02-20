@@ -11,6 +11,7 @@ import { SigninPage } from './Pages/SigninPage/SigninPage'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { Goods } from './Pages/Goods/Goods'
 import { AppContextProvider } from './contexts/AppContextProvider'
+import { CartPage } from './Pages/Cart/Cart'
 
 
 const myRouter = createBrowserRouter([
@@ -33,6 +34,10 @@ const myRouter = createBrowserRouter([
       {
         path: 'signin',
         element: <SigninPage />,
+      },
+      {
+        path: 'cart',
+        element: <CartPage />,
       }
     ]
   }
@@ -41,7 +46,7 @@ const myRouter = createBrowserRouter([
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      refetchOnWindowFocus: false, // default: true
+      refetchOnWindowFocus: false,
     },
   },
 })

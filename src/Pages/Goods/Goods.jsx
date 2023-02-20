@@ -1,17 +1,21 @@
 /* eslint-disable */
 
 import { useQuery } from "@tanstack/react-query"
-import { useEffect, useContext } from "react"
+import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { AppContext } from "../../contexts/AppContextProvider"
 import { Loader } from "../../components/Loader/Loader"
 import { GoodsItem } from "../GoodsItem/GoodsItem"
 import goodsStyles from "./goods.module.css"
+import { useSelector } from "react-redux"
+
+export const getTokenSelector = (state) => state.auth.token;
 
 export const Goods = () => {
-  const { token } = useContext(AppContext)
+  const token = useSelector((state) => state.auth.token);
+  const search = useSelector((state) => state.catalog.search);
   const navigate = useNavigate()
-  console.log( {token})
+  
 
   useEffect(() => {
     if (!token) {
@@ -22,14 +26,15 @@ export const Goods = () => {
   const { data, isLoading, isError, error, refetch } = useQuery({
     queryKey: ["productsfetch"],
     queryFn: () =>
-      fetch("https://api.react-learning.ru/products", {
-        headers: {
-          authorization: `Bearer ${token}`,
+      
+      fetch(`https://api.react-learning.ru/products/search?query=${search}`, {
+          headers: {
+            authorization: `Bearer ${token}`,
         },
       }).then((res) => {
-        if (res.status > 299) {
+        if (!res.ok) {
           throw new Error(
-            `Ошибка при получении списка продуктов. Status: ${res.status}`
+              `Ошибка при получении списка продуктов. Status: ${res.status}`
           )
         }
 
@@ -37,6 +42,11 @@ export const Goods = () => {
       }),
     enabled: token !== undefined,
   })
+
+  useEffect(() => {
+    refetch();
+  }, [search]);
+
 
   if (isError)
     return (
@@ -49,13 +59,12 @@ export const Goods = () => {
     )
 
   if (isLoading) return <Loader />
-  if (!data.products.length) return <p>Ошибка</p>
-
-  return (
-    <ul className={goodsStyles.productsList}>
-      {data.products.map((product, index) => (
-        <GoodsItem product={product} key={index} />
-      ))}
+    return (
+      <ul className={goodsStyles.productsList}>
+        {data.map((product, index) => (
+          <GoodsItem product={product} key={index} />
+            ))}
     </ul>
   )
 }
+

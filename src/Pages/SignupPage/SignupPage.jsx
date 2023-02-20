@@ -1,10 +1,11 @@
 /* eslint-disable */
-
+  
 import signupStyles from './signuppage.module.css'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { createSignupFormValidationSchema } from './validator'
 import { useMutation } from '@tanstack/react-query'
 import { Route, useNavigate } from 'react-router-dom'
+import { SignupPageErr } from './SignupPageErr'
 
 const initialValues = {
     email: '',
@@ -52,7 +53,7 @@ export function SignupPage() {
         <Field className={signupStyles.input} name="password" placeholder="password here" type="text" />
         <ErrorMessage component="p" className="error" name="password" />
     
-        <button disabled={isLoading} className={signupStyles.btn} type="submit">Sign up</button>
+        <button disabled={isLoading} className={signupStyles.btn} type="submit">Регистрация</button>
       </Form>
     </Formik>
   )

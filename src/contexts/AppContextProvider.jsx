@@ -12,9 +12,10 @@ export const AppContextProvider = ({ children }) => {
   const [token, setToken] = useState(() => {
     const tokenFromLS = localStorage.getItem(DOGSHOP_LS_KEY)
     const preparedData = tokenFromLS ? JSON.parse(tokenFromLS) : []
-
+    
     return preparedData
   })
+  
 
   useEffect(() => {
     localStorage.setItem(DOGSHOP_LS_KEY, JSON.stringify(token))
@@ -28,3 +29,4 @@ export const AppContextProvider = ({ children }) => {
     </AppContext.Provider>
   )
 }
+

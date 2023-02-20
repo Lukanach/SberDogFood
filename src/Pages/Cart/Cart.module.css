@@ -1,0 +1,27 @@
+.wrapper {
+    padding: 40px 60px;
+    display: flex;
+  }
+  
+  .cartItems {
+    width: calc(100% - 20% - 20px);
+  }
+  
+  .cartItem {
+    border: 1px solid #ddd;
+    padding: 8px 12px;
+  }
+  
+  .cartItem + .cartItem {
+    margin-top: 10px;
+  }
+  
+  .cartInfo {
+    margin-left: 20px;
+    border: 1px solid #ddd;
+    width: 20%;
+  }
+  
+  .empty {
+    padding: 20px 26px;
+  }
